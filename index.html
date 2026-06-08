@@ -94,6 +94,10 @@
       transition: color 0.15s, border-color 0.15s;
     }
     nav ul li a:hover { color: var(--ink); }
+    nav ul li a.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
 
     /* ── Main content ── */
     main {
@@ -470,5 +474,21 @@
   </div>
 </footer>
 
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav ul li a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
