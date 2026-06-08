@@ -1,7 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donggyu | Personal Page</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a { color: #0070f3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0 1.5rem;
+    }
+    nav {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    nav .logo { font-weight: 700; font-size: 1.1rem; color: #222; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: #555; font-size: 0.9rem; }
+    nav ul li a:hover { color: #0070f3; text-decoration: none; }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section { margin-bottom: 3rem; }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 2rem 0 1rem;
+    }
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e5e5e5;
+      flex-shrink: 0;
+    }
+    .hero-text h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+    .hero-text .subtitle { color: #555; font-size: 1rem; margin-bottom: 0.75rem; }
+    .hero-text .links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid #0070f3;
+      color: #0070f3;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn:hover { background: #0070f3; color: #fff; text-decoration: none; }
+    .btn.primary { background: #0070f3; color: #fff; }
+    .btn.primary:hover { background: #005bbf; border-color: #005bbf; }
+
+    /* ── Sections ── */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #e5e5e5;
+    }
+    p { margin-bottom: 0.5rem; color: #444; }
+
+    /* ── Education / Experience ── */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
+    .card-header strong { font-size: 0.975rem; }
+    .card-header span { font-size: 0.8rem; color: #888; }
+    .card p { margin: 0; font-size: 0.875rem; color: #555; }
+
+    /* ── Skills ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: #eef4ff;
+      color: #0051a8;
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ── Contact ── */
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .contact-list li { font-size: 0.9rem; color: #444; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .hero { flex-direction: column; align-items: flex-start; }
+      .hero img { width: 110px; height: 110px; }
+      .hero-text h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to my Personal Page</h1>
-  <p>Hosted on Github Pages!</p>
+
+<header>
+  <nav aria-label="Site navigation">
+    <span class="logo">Donggyu</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" id="about" aria-label="Profile">
+    <img src="asset/profile.jpg" alt="Profile photo of Donggyu" />
+    <div class="hero-text">
+      <h1>Lee Donggyu</h1>
+      <p class="subtitle">Student &middot; Seoul National University</p>
+      <div class="links">
+        <a class="btn primary" href="asset/cv.pdf" download aria-label="Download CV as PDF">Download CV</a>
+        <a class="btn" href="https://github.com/donggyu0607" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about-text" aria-labelledby="about-heading">
+    <h2 id="about-heading">About</h2>
+    <p>
+      Hi, I'm Lee Donggyu. I'm a student at Seoul National University interested in
+      chemistry and biology, computer engineering, and bioinformatics.
+    </p>
+    <p>
+      Feel free to browse my page, check out my CV, or reach out via the contact section below.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" aria-labelledby="edu-heading">
+    <h2 id="edu-heading">Education</h2>
+    <div class="card">
+      <div class="card-header">
+        <strong>Seoul National University</strong>
+        <span>2022 &ndash; Present</span>
+      </div>
+      <p>B.S. in Chemical and Biological Engineering</p>
+      <p>Interdisciplinary Program in Artificial Intelligence</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Skills</h2>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">C</span>
+      <span class="tag">C++</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">HTML / CSS</span>
+      <span class="tag">Git</span>
+      <span class="tag">Chemical Process Design</span>
+      <span class="tag">Bioinformatics</span>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv" aria-labelledby="cv-heading">
+    <h2 id="cv-heading">CV / Resume</h2>
+    <p>
+      You can view or download my full resume as a PDF:
+      <a href="asset/cv.pdf" download>Download CV (PDF)</a>
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Contact</h2>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:donggyu0607@snu.ac.kr">donggyu0607@snu.ac.kr</a></li>
+      <li>GitHub: <a href="https://github.com/donggyu0607" target="_blank" rel="noopener">github.com/donggyu0607</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Donggyu. Hosted on GitHub Pages.</p>
+</footer>
+
 </body>
 </html>
