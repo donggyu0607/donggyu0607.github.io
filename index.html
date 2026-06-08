@@ -3,139 +3,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Donggyu | Personal Page</title>
+  <title>Lee Donggyu | Personal Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ── Design tokens (Airbnb-style) ── */
+    :root {
+      --primary:        #ff385c;
+      --primary-active: #e00b41;
+      --ink:            #222222;
+      --body-text:      #3f3f3f;
+      --muted:          #6a6a6a;
+      --hairline:       #dddddd;
+      --hairline-soft:  #ebebeb;
+      --canvas:         #ffffff;
+      --surface-soft:   #f7f7f7;
+      --surface-strong: #f2f2f2;
+      --on-primary:     #ffffff;
+
+      --r-xs:  4px;
+      --r-sm:  8px;
+      --r-md:  14px;
+      --r-lg:  20px;
+      --r-xl:  32px;
+      --r-full:9999px;
+
+      --sp-sm:  8px;
+      --sp-md:  12px;
+      --sp-base:16px;
+      --sp-lg:  24px;
+      --sp-xl:  32px;
+      --sp-xxl: 48px;
+      --sp-section: 64px;
+
+      --shadow-card: rgba(0,0,0,0.02) 0 0 0 1px,
+                     rgba(0,0,0,0.04) 0 2px 6px 0,
+                     rgba(0,0,0,0.10) 0 4px 8px 0;
+
+      --font: 'Inter', Circular, -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f9f9f9;
-      color: #222;
-      line-height: 1.6;
+      font-family: var(--font);
+      background: var(--canvas);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: #0070f3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--ink); text-decoration: none; }
 
-    /* ── Layout ── */
+    /* ── Top Nav ── */
     header {
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
     }
     nav {
-      max-width: 800px;
+      max-width: 1280px;
       margin: 0 auto;
+      padding: 0 var(--sp-xxl);
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
     }
-    nav .logo { font-weight: 700; font-size: 1.1rem; color: #222; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav ul li a { color: #555; font-size: 0.9rem; }
-    nav ul li a:hover { color: #0070f3; text-decoration: none; }
+    .nav-logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--sp-xl);
+    }
+    nav ul li a {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.25;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    nav ul li a:hover { color: var(--ink); }
 
+    /* ── Main content ── */
     main {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      padding: var(--sp-section) var(--sp-xxl);
     }
 
-    section { margin-bottom: 3rem; }
+    section { margin-bottom: var(--sp-section); }
 
     /* ── Hero ── */
     .hero {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: var(--sp-xxl);
       flex-wrap: wrap;
-      padding: 2rem 0 1rem;
     }
     .hero img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
+      width: 148px;
+      height: 148px;
+      border-radius: var(--r-full);
       object-fit: cover;
-      border: 3px solid #e5e5e5;
+      border: 2px solid var(--hairline);
       flex-shrink: 0;
     }
-    .hero-text h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-    .hero-text .subtitle { color: #555; font-size: 1rem; margin-bottom: 0.75rem; }
-    .hero-text .links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border: 1px solid #0070f3;
-      color: #0070f3;
-      transition: background 0.15s, color 0.15s;
-    }
-    .btn:hover { background: #0070f3; color: #fff; text-decoration: none; }
-    .btn.primary { background: #0070f3; color: #fff; }
-    .btn.primary:hover { background: #005bbf; border-color: #005bbf; }
-
-    /* ── Sections ── */
-    h2 {
-      font-size: 1.2rem;
+    .hero-text h1 {
+      font-size: 28px;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid #e5e5e5;
+      line-height: 1.43;
+      margin-bottom: 4px;
+      color: var(--ink);
     }
-    p { margin-bottom: 0.5rem; color: #444; }
+    .hero-text .subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: var(--sp-lg);
+    }
+    .hero-btns { display: flex; gap: var(--sp-sm); flex-wrap: wrap; }
 
-    /* ── Education / Experience ── */
-    .card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 0.75rem;
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 14px 24px;
+      border-radius: var(--r-sm);
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.25;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
     }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      border: none;
+    }
+    .btn-primary:hover { background: var(--primary-active); }
+    .btn-secondary {
+      background: var(--canvas);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .btn-secondary:hover { background: var(--surface-soft); }
+
+    /* ── Section headings ── */
+    h2 {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.43;
+      color: var(--ink);
+      margin-bottom: var(--sp-lg);
+    }
+
+    /* ── About text ── */
+    .about-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--body-text);
+    }
+    .about-body + .about-body { margin-top: var(--sp-sm); }
+
+    /* ── Education card ── */
+    .card {
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-md);
+      padding: var(--sp-lg);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: var(--shadow-card); }
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-bottom: 0.2rem;
+      gap: 4px;
+      margin-bottom: var(--sp-sm);
     }
-    .card-header strong { font-size: 0.975rem; }
-    .card-header span { font-size: 0.8rem; color: #888; }
-    .card p { margin: 0; font-size: 0.875rem; color: #555; }
+    .card-header strong {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .card-header span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .card p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--body-text);
+      line-height: 1.43;
+    }
+    .card p + p { margin-top: 2px; }
 
     /* ── Skills ── */
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: var(--sp-sm); }
     .tag {
-      background: #eef4ff;
-      color: #0051a8;
-      border-radius: 20px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.8rem;
+      background: var(--surface-soft);
+      color: var(--ink);
+      border-radius: var(--r-xl);
+      padding: 10px 20px;
+      font-size: 14px;
       font-weight: 500;
+      line-height: 1.29;
+      border: 1px solid var(--hairline-soft);
+      transition: box-shadow 0.15s;
+    }
+    .tag:hover { box-shadow: var(--shadow-card); }
+
+    /* ── CV section ── */
+    .cv-block {
+      background: var(--surface-soft);
+      border-radius: var(--r-md);
+      padding: var(--sp-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--sp-base);
+    }
+    .cv-block p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--body-text);
     }
 
     /* ── Contact ── */
-    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .contact-list li { font-size: 0.9rem; color: #444; }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-md); }
+    .contact-list li {
+      font-size: 16px;
+      color: var(--body-text);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-sm);
+    }
+    .contact-list a {
+      color: var(--primary);
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .contact-list a:hover { border-color: var(--primary); }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--hairline-soft);
+      margin-bottom: var(--sp-section);
+    }
 
     /* ── Footer ── */
     footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: #aaa;
-      border-top: 1px solid #e5e5e5;
+      border-top: 1px solid var(--hairline);
+      padding: var(--sp-xxl) var(--sp-xxl);
+    }
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--sp-base);
+    }
+    footer p {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.23;
     }
 
     /* ── Responsive ── */
-    @media (max-width: 520px) {
-      .hero { flex-direction: column; align-items: flex-start; }
-      .hero img { width: 110px; height: 110px; }
-      .hero-text h1 { font-size: 1.5rem; }
+    @media (max-width: 744px) {
+      nav { padding: 0 var(--sp-base); height: 64px; }
+      nav ul { gap: var(--sp-base); }
+      nav ul li a { font-size: 14px; }
+      main { padding: var(--sp-xl) var(--sp-base); }
+      .hero { flex-direction: column; gap: var(--sp-lg); }
+      .hero img { width: 112px; height: 112px; }
+      .hero-text h1 { font-size: 22px; }
+      .cv-block { flex-direction: column; align-items: flex-start; }
+      footer { padding: var(--sp-xl) var(--sp-base); }
     }
   </style>
 </head>
@@ -143,7 +311,7 @@
 
 <header>
   <nav aria-label="Site navigation">
-    <span class="logo">Donggyu</span>
+    <span class="nav-logo">L</span>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
@@ -156,29 +324,33 @@
 <main>
 
   <!-- Hero -->
-  <section class="hero" id="about" aria-label="Profile">
-    <img src="asset/profile.jpg" alt="Profile photo of Donggyu" />
+  <section class="hero" aria-label="Profile">
+    <img src="asset/profile.jpg" alt="Profile photo of Lee Donggyu" />
     <div class="hero-text">
       <h1>Lee Donggyu</h1>
       <p class="subtitle">Student &middot; Seoul National University</p>
-      <div class="links">
-        <a class="btn primary" href="asset/cv.pdf" download aria-label="Download CV as PDF">Download CV</a>
-        <a class="btn" href="https://github.com/donggyu0607" target="_blank" rel="noopener">GitHub</a>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="asset/cv.pdf" download>Download CV</a>
+        <a class="btn btn-secondary" href="https://github.com/donggyu0607" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </section>
 
+  <hr class="divider" />
+
   <!-- About -->
-  <section id="about-text" aria-labelledby="about-heading">
+  <section id="about" aria-labelledby="about-heading">
     <h2 id="about-heading">About</h2>
-    <p>
+    <p class="about-body">
       Hi, I'm Lee Donggyu. I'm a student at Seoul National University interested in
       chemistry and biology, computer engineering, and bioinformatics.
     </p>
-    <p>
+    <p class="about-body">
       Feel free to browse my page, check out my CV, or reach out via the contact section below.
     </p>
   </section>
+
+  <hr class="divider" />
 
   <!-- Education -->
   <section id="education" aria-labelledby="edu-heading">
@@ -192,6 +364,8 @@
       <p>Interdisciplinary Program in Artificial Intelligence</p>
     </div>
   </section>
+
+  <hr class="divider" />
 
   <!-- Skills -->
   <section id="skills" aria-labelledby="skills-heading">
@@ -208,28 +382,35 @@
     </div>
   </section>
 
+  <hr class="divider" />
+
   <!-- CV -->
   <section id="cv" aria-labelledby="cv-heading">
     <h2 id="cv-heading">CV / Resume</h2>
-    <p>
-      You can view or download my full resume as a PDF:
-      <a href="asset/cv.pdf" download>Download CV (PDF)</a>
-    </p>
+    <div class="cv-block">
+      <p>View or download my full resume as a PDF.</p>
+      <a class="btn btn-primary" href="asset/cv.pdf" download>Download CV (PDF)</a>
+    </div>
   </section>
+
+  <hr class="divider" />
 
   <!-- Contact -->
   <section id="contact" aria-labelledby="contact-heading">
     <h2 id="contact-heading">Contact</h2>
     <ul class="contact-list">
-      <li>Email: <a href="mailto:donggyu0607@snu.ac.kr">donggyu0607@snu.ac.kr</a></li>
-      <li>GitHub: <a href="https://github.com/donggyu0607" target="_blank" rel="noopener">github.com/donggyu0607</a></li>
+      <li>Email &mdash; <a href="mailto:donggyu0607@snu.ac.kr">donggyu0607@snu.ac.kr</a></li>
+      <li>GitHub &mdash; <a href="https://github.com/donggyu0607" target="_blank" rel="noopener">github.com/donggyu0607</a></li>
     </ul>
   </section>
 
 </main>
 
 <footer>
-  <p>&copy; 2026 Donggyu. Hosted on GitHub Pages.</p>
+  <div class="footer-inner">
+    <p>&copy; 2026 Lee Donggyu. Hosted on GitHub Pages.</p>
+    <p>Seoul National University</p>
+  </div>
 </footer>
 
 </body>
